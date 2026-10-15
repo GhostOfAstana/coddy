@@ -1,22 +1,18 @@
-func leaders(nums []int) []int {
-    leader := []int{}
-    maxRight := nums[len(nums)-1]
-
-    for i := len(nums) - 1; i >= 0; i-- {
-        if nums[i] >= maxRight {
-            leader = append(leader, nums[i])
-            maxRight = nums[i]
-        }
-    }
-
-    left := 0
-    right := len(leader) - 1
-
-    for left < right {
-        leader[left], leader[right] = leader[right], leader[left]
-        left++
-        right--
-    }
-
-    return leader
-}
+func leaders(nums []int) []int { // Принимаем массив чисел и возвращаем слайс лидеров
+    leader := []int{} // Создаём пустой слайс для лидеров
+    maxRight := nums[len(nums)-1] // Запоминаем последний элемент: он всегда лидер
+    for i := len(nums) - 1; i >= 0; i-- { // Перебираем массив справа налево
+        if nums[i] >= maxRight { // Проверяем, не меньше ли текущий элемент максимума справа
+            leader = append(leader, nums[i]) // Добавляем текущий элемент в лидеры
+            maxRight = nums[i] // Обновляем максимальное значение справа
+        } // Завершаем условие
+    } // Завершаем поиск лидеров
+    left := 0 // Индекс первого элемента для разворота
+    right := len(leader) - 1 // Индекс последнего элемента для разворота
+    for left < right { // Повторяем, пока индексы не встретятся
+        leader[left], leader[right] = leader[right], leader[left] // Меняем элементы местами
+        left++ // Перемещаем левый индекс вправо
+        right-- // Перемещаем правый индекс влево
+    } // Завершаем разворот слайса
+    return leader // Возвращаем лидеров в порядке слева направо
+} // Завершаем функцию
