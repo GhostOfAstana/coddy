@@ -1,9 +1,9 @@
-func findMax(nums []int) (int) {
-    maxValue := nums[0]
-    for i := 1; i < len(nums); i++ {
-        if nums[i] > maxValue {
-            maxValue = nums[i]
-        }
-    }
-    return maxValue
-}
+func findMax(nums []int) int {       // Принимаем слайс чисел, возвращаем одно целое число
+    maxValue := nums[0]              // Считаем первый элемент текущим максимумом
+    for i := 1; i < len(nums); i++ { // Проверяем остальные элементы, начиная со второго
+        if nums[i] > maxValue {      // Если текущее число больше нашего максимума
+            maxValue = nums[i]       // Запоминаем новое максимальное значение
+        }                            // Завершаем проверку условия
+    }                                // Завершаем перебор всех чисел
+    return maxValue                  // Возвращаем найденный максимум
+}                                    // Завершаем функцию
