@@ -1,16 +1,16 @@
-func secondLargest(nums []int) (int) {
-    largest := nums[0]
-    second := 0
-    hasSecond := false
-    for i := 1; i < len(nums); i++ {
-        if nums[i] > largest {
-            second = largest
-            largest = nums[i]
-            hasSecond = true
-        } else if nums[i] < largest && (!hasSecond || nums[i] > second) {
-            second = nums[i]
-            hasSecond = true
+func secondLargest(nums []int) int { // Принимаем список чисел, возвращаем одно число
+    largest := nums[0] // Первое число пока считаем максимальным
+    second := 0 // Здесь будем хранить второй максимум
+    hasSecond := false // Пока настоящий второй максимум не найден
+    for i := 1; i < len(nums); i++ { // Проверяем остальные числа, начиная со второго
+        if nums[i] > largest { // Если нашли число больше текущего максимума
+            second = largest // Старый максимум становится вторым
+            largest = nums[i] // Запоминаем новый максимум
+            hasSecond = true // Отмечаем, что второй максимум найден
+        } else if nums[i] < largest && (!hasSecond || nums[i] > second) { // Число меньше максимума и улучшает второй результат
+            second = nums[i] // Запоминаем это число как второй максимум
+            hasSecond = true // Отмечаем, что второй максимум найден
         }
     }
-    return second
+    return second // Возвращаем второе по величине уникальное число
 }
